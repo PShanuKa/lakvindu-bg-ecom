@@ -1,26 +1,17 @@
 {
-  "name": "admin-dashboard",
+  "name": "clothing-ecommerce",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "workspaces": ["client", "server", "admin-dashboard"],
   "scripts": {
-    "dev": "vite --port 5174",
-    "build": "vite build",
-    "preview": "vite preview --port 5174"
-  },
-  "dependencies": {
-    "axios": "^1.12.2",
-    "jspdf": "^3.0.3",
-    "jspdf-autotable": "^5.0.2",
-    "lucide-react": "^0.460.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.1"
+    "dev": "concurrently -n client,server -c auto \"npm --workspace client run dev\" \"npm --workspace server run dev\"",
+    "dev:client": "npm --workspace client run dev",
+    "dev:server": "npm --workspace server run dev",
+    "dev:admin": "npm --workspace admin-dashboard run dev",
+    "dev:all": "concurrently -n client,server,admin -c auto \"npm --workspace client run dev\" \"npm --workspace server run dev\" \"npm --workspace admin-dashboard run dev\"",
+    "build": "npm --workspace client run build && npm --workspace server run build && npm --workspace admin-dashboard run build",
+    "start": "npm --workspace server run start"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.13",
-    "@vitejs/plugin-react": "^5.0.2",
-    "tailwindcss": "^4.1.13",
-    "vite": "^7.1.7"
+    "concurrently": "^9.0.1"
   }
 }
