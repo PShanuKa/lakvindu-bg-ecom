@@ -19,7 +19,7 @@ const devOrigins = [
   'http://localhost:5178', 'http://127.0.0.1:5178',
 ]
 
-const prodOrigins = [
+const Origins = [
   'http://localhost:5173', 'http://127.0.0.1:5173',
   'http://localhost:5174', 'http://127.0.0.1:5174',
   'http://localhost:5175', 'http://127.0.0.1:5175',
@@ -28,7 +28,10 @@ const prodOrigins = [
   'http://localhost:5178', 'http://127.0.0.1:5178',
 ]
 
-const allowedOrigins = Array.from(new Set([ ...envOrigins, ...(isProd ? prodOrigins : devOrigins) ]))
+
+
+
+const allowedOrigins = Array.from(new Set([ ...envOrigins, ...(isProd ? Origins : devOrigins) ]))
 
 export const corsOptions = {
   origin: function (origin, callback) {
